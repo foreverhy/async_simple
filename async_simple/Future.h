@@ -18,11 +18,9 @@
 
 #include <async_simple/Executor.h>
 #include <async_simple/FutureState.h>
-#include <async_simple/Invoke.h>
 #include <async_simple/LocalState.h>
 #include <async_simple/Promise.h>
 #include <async_simple/Traits.h>
-#include <unistd.h>
 #include <type_traits>
 
 #include <async_simple/uthread/internal/thread_impl.h>

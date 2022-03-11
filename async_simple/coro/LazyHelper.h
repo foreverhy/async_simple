@@ -17,7 +17,6 @@
 #define ASYNC_SIMPLE_CORO_LAZY_HELPER_H
 
 #include <async_simple/Common.h>
-#include <async_simple/Invoke.h>
 #include <async_simple/experimental/coroutine.h>
 #include <exception>
 
@@ -45,9 +44,9 @@ inline auto syncAwait(LazyType&& lazy) ->
     std::move(std::forward<LazyType>(lazy))
         .start([&cond, &value](Try<ValueType> result) {
             value = std::move(result);
-            cond.set();
+            cond.release();
         });
-    cond.wait();
+    cond.acquire();
     return std::move(value).value();
 }
 
